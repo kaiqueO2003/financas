@@ -1,10 +1,10 @@
 package com.example.financas.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.financas.domain.enums.UsuarioRole;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -19,16 +19,18 @@ public class Usuario {
     private String senha;
     private UsuarioRole role;
 
+    @OneToMany(mappedBy = "usuario")
+    private List<Transacao> transacoes;
     public Usuario(){
 
     }
 
-    public Usuario(Long id, String nome, String email, String senha, UsuarioRole role) {
+    public Usuario(Long id, String nome, String email, String senha, UsuarioRole role, List<Transacao> transacoes) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.role = role;
+        this.transacoes = transacoes;
     }
-
 }
