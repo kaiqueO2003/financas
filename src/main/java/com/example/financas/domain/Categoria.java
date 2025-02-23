@@ -1,12 +1,14 @@
 package com.example.financas.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
+
 public class Categoria {
 
     @Id
@@ -28,5 +30,8 @@ public class Categoria {
         this.nome = nome;
         this.descricao = descricao;
         this.transacoes = transacoes;
+    }
+
+    public Categoria(Long id, String nome, String descricao) {
     }
 }
